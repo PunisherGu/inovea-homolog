@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    command: >
+      sh -c "python3 manage.py migrate &&
+             python3 manage.py runserver 0.0.0.0:8000"
+
+    environment:
+      - API_KEY=1c2f931d70594c279bd4d9247b2a955b
+      - SECRET_KEY='5^3y(kp(lo7fcps_d2z5khnfd!hx^vq+uf%kcimwdurz%e@pjr'
